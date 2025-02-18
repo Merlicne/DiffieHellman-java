@@ -39,22 +39,3 @@ After starting the application, you can access the Diffie-Hellman key exchange e
         "publicKey": "<BASE36_NUMBER>"
     }
     ```
-
-
-## Project Structure
-
-- `src/main/java`: Contains the Java source files
-- `src/main/resources`: Contains the application configuration files
-- `build.gradle`: Gradle build file
-
-## License
-
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
-
-## Contributing
-
-Contributions are welcome! Please open an issue or submit a pull request for any changes.
-
-## Contact
-
-For any inquiries, please contact [yourname@domain.com](mailto:yourname@domain.com).
