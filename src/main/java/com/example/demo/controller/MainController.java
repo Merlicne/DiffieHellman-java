@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestAttribute;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.demo.model.ChatRoom;
@@ -24,14 +25,16 @@ public class MainController {
     private final NumberService numberService;
 
     @GetMapping("/")
-    public String home() {
+    public String home(Model model) {
+        model.addAttribute("username", "");
+        model.addAttribute("chatRoom_id", "");
         return "index";
     }
 
 
     // enter chat room
     @PostMapping("/chat")
-    public String chat(@RequestParam String username, @RequestParam String chatRoom_id,  Model model) {
+    public String chat(@RequestAttribute String username, @RequestAttribute String chatRoom_id,  Model model) {
         Random randNum = new Random();
 		BigInteger privateKey =  new BigInteger(32, randNum); //a,b
 

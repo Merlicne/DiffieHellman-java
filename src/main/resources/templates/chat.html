@@ -39,21 +39,19 @@
             <div class="messages" id="messages">
 
                 <div class="container ">
-                    <!-- alert chat -->
+                    <!-- notify chat -->
                     <p class="text-center fst-italic">merlince enter the room!</p>         
                     <p class="text-center fst-italic">exchanging key...</p>         
                     <p class="text-center fst-italic">your connection is secured. you can start!</p>         
 
                     <!-- left -->
-                    <div id="block-left">
+                    <div id="block-left" th:object="${Message}">
                         <div class="flex" id="info">
-                            <div class="username" id="username">Banana</div>
-                            <div class="time" id="time">17.30</div>
+                            <div class="username" id="username" th:text="${sender.username}"></div>
+                            <div class="time" id="time" th:text="${timestamp}"></div>
                         </div>
                         <div class="flex" id="message">
-                            <div class="message-text" id="message-text">Sure,
-                                it's#12345678gbdcfavgjshbcjvpoiuytrejhgfxbvcblkjsbfvkfnvkcsldjnckn.rnfjk.snerf.kvnesrfljndfnvjkldnrftkvsdnftr9.
-                            </div>
+                            <div class="message-text" id="message-text" th:text="${message}"></div>
                         </div>
                         <div class="flex" id="decrypt-action">
                             <div class="form-check form-switch" id="checkbox">
@@ -67,13 +65,11 @@
                     <!-- right -->
                     <div id="block-right">
                         <div class="flex" id="info">
-                            <div class="username" id="username">Banana</div>
-                            <div class="time" id="time">17.30</div>
+                            <div class="username" id="username" th:text="${sender.username}"></div>
+                            <div class="time" id="time" th:text="${timestamp}"></div>
                         </div>
-                        <div class="flex" id="info">
-                            <div class="message-text " id="message-text">
-                                Sukjhgfdghfdghfgddsghgfdsghfdsghfdshfgdsbvccxvdfbxfgnmgxfhgmncghnfgnxfgnbfxfgnxngfre,
-                                it's #12345678gb9.</div>
+                        <div class="flex" id="message">
+                            <div class="message-text" id="message-text" th:text="${message}"></div>
                         </div>
                         <div class="flex" id="decrypt-action">
                             <div class="form-check form-switch" id="checkbox">

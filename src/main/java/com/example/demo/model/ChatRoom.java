@@ -1,5 +1,6 @@
 package com.example.demo.model;
 
+import java.math.BigInteger;
 import java.util.List;
 import java.util.Map;
 
@@ -19,7 +20,11 @@ import lombok.Setter;
 public class ChatRoom {
     private String roomId;
     private Map<String, List<Client>> clients;
+    private BigInteger G;
+    private BigInteger P;
     private Map<String, List<Message>> messages;
+
+    
 
     public void addClient(String roomId, Client client) {
         clients.get(roomId).add(client);
