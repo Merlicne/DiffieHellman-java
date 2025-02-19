@@ -36,19 +36,13 @@
                 <!-- Username -->
                 <div class="mb-3">
                     <label for="username" class="form-label">Username</label>
-                    <input type="text" class="form-control" id="username" name="username" placeholder="Enter your username" required>
+                    <input type="text" th:field="*{username}" class="form-control" id="username" name="username" placeholder="Enter your username" required>
                 </div>
 
                 <!-- Chat Room -->
                 <div class="mb-3">
                     <label for="chatRoom" class="form-label">Chat Room</label>
-                    <select class="form-select" id="chatRoom" name="chatRoom" required>
-                        <option value="" disabled selected>Select a chat room</option>
-                        <option value="general">General</option>
-                        <option value="tech">Tech</option>
-                        <option value="gaming">Gaming</option>
-                        <option value="random">Random</option>
-                    </select>
+                    <input type="text" th:field="*{chatRoom}" class="form-control" id="chatRoom" name="chatRoom" placeholder="Enter a chat room" required>
                 </div>
 
                 <!-- Submit Button -->
