@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.example.demo.model.ChatRoom;
 import com.example.demo.model.Client;
 import com.example.demo.service.DiffieHellman;
+import com.example.demo.service.NumberService;
 
 import lombok.RequiredArgsConstructor;
 
@@ -20,7 +21,7 @@ import lombok.RequiredArgsConstructor;
 public class MainController {
 
     private final DiffieHellman diffieHellman;  // P, G
-    // private final NumberService numberService;
+    private final NumberService numberService;
 
     @GetMapping("/")
     public String home() {
@@ -37,15 +38,21 @@ public class MainController {
         Client client = Client.builder().username(username).privateKey(privateKey).build();
         model.addAttribute("client", client);
 
-        ChatRoom chatRoom = ChatRoom.builder().roomId(chatRoom_id).build(); 
+        BigInteger P = numberService.generatePrime(5);
+        ChatRoom chatRoom = ChatRoom.builder()
+                            .roomId(chatRoom_id)
+                            .P(P)
+                            .G(numberService.primativeRoot(P))
+                            .build(); 
         chatRoom.addClient(chatRoom_id, client);
         model.addAttribute("chatRoom", chatRoom);
         
-        BigInteger publicKey = diffieHellman.generatePublicKey(client); //x,y
-        model.addAttribute("publicKey", publicKey);
+        // a, b
+        BigInteger keyGenerated = diffieHellman.generateKey(client, chatRoom.getG(), chatRoom.getP()); //x,y
+        model.addAttribute("keyGen", keyGenerated);
 
-        model.addAttribute("P", diffieHellman.getP());
-        model.addAttribute("G", diffieHellman.getG());
+        model.addAttribute("P", chatRoom.getP());
+        model.addAttribute("G", chatRoom.getG());
         model.addAttribute("pv_key", client.getPrivateKey());
         return "chat";
     }    

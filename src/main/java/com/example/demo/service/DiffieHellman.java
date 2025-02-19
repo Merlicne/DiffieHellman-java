@@ -7,8 +7,8 @@ import com.example.demo.model.Client;
 
 
 public interface  DiffieHellman {
-    public BigInteger generatePublicKey(Client client);
-    public void generateSecretKey(Client client, BigInteger genKey);
+    public BigInteger generateKey(Client client, BigInteger G, BigInteger P);
+    public void generateSecretKey(Client client, BigInteger genKey, BigInteger P);
     public String encrypt(Client client, String message);
     public String decrypt(Client client, String message);
     public BigInteger getP();

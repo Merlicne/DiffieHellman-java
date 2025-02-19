@@ -21,26 +21,26 @@ import lombok.Getter;
 public class DiffieImpl implements DiffieHellman {
     private final NumberService numberService;
 
-    private final int n_digits ;
+    // private final int n_digits ;
     private final BigInteger P ;
     private final BigInteger G ;
 
     public DiffieImpl(NumberService numberService) {
         this.numberService = numberService;
-        this.n_digits = 10;
-        this.P = numberService.generatePrime(n_digits);
-        this.G = numberService.primativeRoot(P);
+        // this.n_digits = 10;
+        // this.P = numberService.generatePrime(n_digits);
+        // this.G = numberService.primativeRoot(P);
     }
 
     @Override
-    public BigInteger generatePublicKey(Client client) {
+    public BigInteger generateKey(Client client, BigInteger G, BigInteger P) {
         // G^a mod P
-        BigInteger publicKey  = G.modPow(client.getPrivateKey(), P);
-        return publicKey;
+        BigInteger keyGenerated  = G.modPow(client.getPrivateKey(), P);
+        return keyGenerated;
     }
 
     @Override
-    public void generateSecretKey(Client client, BigInteger genKey) {
+    public void generateSecretKey(Client client, BigInteger genKey, BigInteger P) {
         // genKey^a mod P : 
         // genKey:other user
         client.setSecretKey(genKey.modPow(client.getPrivateKey(), P));
