@@ -19,17 +19,17 @@
                 <hr>
                 <div>
                     <h6 class="fw-bold">Primary Numbers (P):</h6>
-                    <h6 class="fw-normal">123456</h6>
+                    <h6 class="fw-normal" th:text="*{P}"></h6>
                 </div>
                 <hr>
                 <div>
                     <h6 class="fw-bold">Greatest Common Divisor (G):</h6>
-                    <h6 class="fw-normal">123456</h6>
+                    <h6 class="fw-normal" th:text="*{G}">123456</h6>
                 </div>
                 <hr>
                 <div>
                     <h6 class="fw-bold">private key</h6>
-                    <h6 class="fw-normal">123456</h6>
+                    <h6 class="fw-normal" th:text="*{pv_key}">123456</h6>
                 </div>
 
         </div>
@@ -38,7 +38,12 @@
         <div class="chat-box">
             <div class="messages" id="messages">
 
-                <div class="container">
+                <div class="container ">
+                    <!-- alert chat -->
+                    <p class="text-center fst-italic">merlince enter the room!</p>         
+                    <p class="text-center fst-italic">exchanging key...</p>         
+                    <p class="text-center fst-italic">your connection is secured. you can start!</p>         
+
                     <!-- left -->
                     <div id="block-left">
                         <div class="flex" id="info">
@@ -50,10 +55,10 @@
                                 it's#12345678gbdcfavgjshbcjvpoiuytrejhgfxbvcblkjsbfvkfnvkcsldjnckn.rnfjk.snerf.kvnesrfljndfnvjkldnrftkvsdnftr9.
                             </div>
                         </div>
-                        <div class="flex">
-                            <div class="form-check form-switch">
+                        <div class="flex" id="decrypt-action">
+                            <div class="form-check form-switch" id="checkbox">
                                 <input class="form-check-input" type="checkbox" role="switch"
-                                    id="flexSwitchCheckDefault">
+                                    id="flexSwitchCheckDefault" id="describtion">
                                 <label class="form-check-label" for="flexSwitchCheckDefault">Decrypt !</label>
                             </div>
                         </div>
@@ -70,10 +75,10 @@
                                 Sukjhgfdghfdghfgddsghgfdsghfdsghfdshfgdsbvccxvdfbxfgnmgxfhgmncghnfgnxfgnbfxfgnxngfre,
                                 it's #12345678gb9.</div>
                         </div>
-                        <div class="flex">
-                            <div class="form-check form-switch">
+                        <div class="flex" id="decrypt-action">
+                            <div class="form-check form-switch" id="checkbox">
                                 <input class="form-check-input" type="checkbox" role="switch"
-                                    id="flexSwitchCheckDefault">
+                                    id="flexSwitchCheckDefault" id="describtion">
                                 <label class="form-check-label" for="flexSwitchCheckDefault">Decrypt !</label>
                             </div>
                         </div>
@@ -90,7 +95,7 @@
                     </div>
                 </form>
             </div>
-            
+
         </div>
     </div>
 
