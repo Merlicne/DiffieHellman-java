@@ -8,12 +8,11 @@ import com.example.demo.model.Client;
 
 import org.springframework.stereotype.Service;
 import org.springframework.security.crypto.encrypt.Encryptors;
-import org.springframework.security.crypto.encrypt.TextEncryptor; 
+import org.springframework.security.crypto.encrypt.TextEncryptor;
 
 import lombok.Data;
 import lombok.Getter;
 // import lombok.RequiredArgsConstructor;
-
 
 @Service
 @Getter
@@ -21,40 +20,33 @@ import lombok.Getter;
 public class DiffieImpl implements DiffieHellman {
     private final NumberService numberService;
 
-    // private final int n_digits ;
-    private final BigInteger P ;
-    private final BigInteger G ;
-
     public DiffieImpl(NumberService numberService) {
         this.numberService = numberService;
-        // this.n_digits = 10;
-        // this.P = numberService.generatePrime(n_digits);
-        // this.G = numberService.primativeRoot(P);
     }
 
     @Override
     public BigInteger generateKey(Client client, BigInteger G, BigInteger P) {
         // G^a mod P
-        BigInteger keyGenerated  = G.modPow(client.getPrivateKey(), P);
+        BigInteger keyGenerated = G.modPow(client.getPrivateKey(), P);
         return keyGenerated;
     }
 
     @Override
-    public void generateSecretKey(Client client, BigInteger genKey, BigInteger P) {
-        // genKey^a mod P : 
+    public String generateSecretKey(Client client, BigInteger genKey, BigInteger P) {
+        // genKey^a mod P :
         // genKey:other user
-        client.setSecretKey(genKey.modPow(client.getPrivateKey(), P));
+        return genKey.modPow(client.getPrivateKey(), P).toString();
     }
 
     @Override
     public String encrypt(Client client, String message) {
-        TextEncryptor encryptor = Encryptors.text(client.getSecretKey().toString(), "");
+        TextEncryptor encryptor = Encryptors.text(client.getSecretKey().toString(), "555555");
         return encryptor.encrypt(message);
     }
 
     @Override
     public String decrypt(Client client, String message) {
-        TextEncryptor encryptor = Encryptors.text(client.getSecretKey().toString(), "");
+        TextEncryptor encryptor = Encryptors.text(client.getSecretKey().toString(), "555555");
         return encryptor.decrypt(message);
     }
 }

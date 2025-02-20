@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Show Encrypted or Decrypted Text</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .text-container {
+            margin-top: 10px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Choose how to display text</h2>
+
+    <label for="textChoice">Display:</label>
+    <select id="textChoice" onchange="updateText()">
+        <option value="hidden" selected>Show &lt;encrypted&gt;</option>
+        <option value="raw">Show Raw Encrypted Text</option>
+        <option value="decrypted">Show Decrypted Text</option>
+    </select>
+
+    <div class="text-container" id="displayText">&lt;encrypted&gt;</div>
+
+    <script th:inline="javascript">
+        // Inject model attributes into JavaScript variables
+        const encryptedText = /*[[${encryptedText}]]*/ "EncryptedTextPlaceholder";
+        const decryptedText = /*[[${decryptedText}]]*/ "DecryptedTextPlaceholder";
+
+        function updateText() {
+            const choice = document.getElementById("textChoice").value;
+            const textElement = document.getElementById("displayText");
+
+            if (choice === "raw") {
+                textElement.textContent = encryptedText;
+            } else if (choice === "decrypted") {
+                textElement.textContent = decryptedText;
+            } else {
+                textElement.textContent = "<encrypted>";
+            }
+        }
+    </script>
+
+</body>
+</html>

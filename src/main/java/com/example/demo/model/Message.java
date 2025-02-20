@@ -18,5 +18,6 @@ import lombok.Setter;
 public class Message {
     private String message;
     private Client sender;
+    private String roomId;
     private LocalDateTime timestamp;
 }
