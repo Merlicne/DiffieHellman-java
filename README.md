@@ -24,18 +24,4 @@ This project is a Java implementation of the Diffie-Hellman key exchange algorit
 
 ## Usage
 
-After starting the application, you can access the Diffie-Hellman key exchange endpoints via HTTP requests. The base URL is `http://localhost:8080`.
-
-### Example Endpoints
-
-- **Compute Shared Secret:**
-    ```http
-    POST /api/diffie-hellman/compute
-    Content-Type: application/json
-
-    {
-        "base": "<BASE36_NUMBER>",
-        "modulus": "<BASE36_NUMBER>",
-        "publicKey": "<BASE36_NUMBER>"
-    }
-    ```
+After starting the application, you can access the Diffie-Hellman key exchanging demonstration at localhost:8080
